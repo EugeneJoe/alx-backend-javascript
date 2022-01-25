@@ -5,7 +5,7 @@ function countStudents(fileName) {
   const fields = {};
   let length = 0;
   try {
-    const fileContents = fs.readFileSync(fileName);
+    const fileContents = fs.readFileSync(fileName, 'utf-8');
     const lines = fileContents.toString().split('\n');
     for (let i = 0; i < lines.length; i += 1) {
       if (lines[i]) {
