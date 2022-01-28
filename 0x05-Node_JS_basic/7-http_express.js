@@ -51,8 +51,7 @@ app.get('/', (request, response) => {
 });
 app.get('/students', (request, response) => {
   countStudents(process.argv[2].toString()).then((output) => {
-    const outString = output.slice(0, -1);
-    response.send(['This is the list of our students', outString.join('\n')]);
+    response.send(['This is the list of our students', output].join('\n'));
   }).catch(() => {
     response.send('This is the list of our students\nCannot load the database');
   });
