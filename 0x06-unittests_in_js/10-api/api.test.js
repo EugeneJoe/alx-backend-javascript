@@ -71,7 +71,7 @@ describe("Available_payments page", function() {
 });
 
 describe("Login", function() {
-    it("check correct status code for request that's sent properly", function() {
+    it("check correct status code for request that's sent properly", function(done) {
 	const opt = {
 	    url: "http://localhost:7865/login",
 	    json: true,
@@ -79,11 +79,12 @@ describe("Login", function() {
 		userName: 'JOE'
 	    }
 	};
-	request.post(opt, (err, res, body) => {
+	request.post(opt, function(err, res, body) {
 	    expect(res.statusCode).to.equal(200);
+	    done();
 	});
     });
-    it("check correct content for request that's sent properly", function() {
+    it("check correct content for request that's sent properly", function(done) {
 	const opts = {
 	    url: "http://localhost:7865/login",
 	    json: true,
@@ -91,15 +92,16 @@ describe("Login", function() {
 		userName: 'JOE'
 	    }
 	};
-	request.post(opts, (err, res, body) => {
+	request.post(opts, function(err, res, body) {
 	    if (err) {
 		expect(res.statusCode).to.not.equal(200);
 	    } else {
 		expect(body).to.contain('Welcome JOE');
 	    }
+	    done();
 	});
     });
-    it("check correct status code for request that's not sent properly", function() {
+    it("check correct status code for request that's not sent properly", function(done) {
 	const op = {
 	    url: "http://localhost:7865/login",
 	    json: true,
@@ -107,8 +109,9 @@ describe("Login", function() {
 		usame: 'JOE'
 	    }
 	};
-	request.post(op, (err, res, body) => {
+	request.post(op, function(err, res, body) {
 	    expect(res.statusCode).to.equal(404);
+	    done();
 	});
     });
 });
