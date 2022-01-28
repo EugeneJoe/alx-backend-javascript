@@ -24,15 +24,14 @@ function countStudents(fileName) {
       }
     }
     const l = length - 1;
-    process.stdout.write(`Number of students: ${l}\n`);
+    console.log(`Number of students: ${l}`);
     for (const [key, value] of Object.entries(fields)) {
       if (key !== 'field') {
-        process.stdout.write(`Number of students in ${key}: ${value}. `);
-        process.stdout.write(`List: ${students[key].join(', ')}\n`);
+        console.log(`Number of students in ${key}: ${value}. List: ${students[key].join(', ')}`);
       }
     }
   } catch (error) {
-    throw new Error('Cannot load the database\n');
+    throw Error('Cannot load the database');
   }
 }
 
