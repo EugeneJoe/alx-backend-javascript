@@ -1,4 +1,4 @@
-const {readFile} = require("fs");
+const { readFile } = require('fs');
 
 module.exports = function readDatabase(filePath) {
   const students = {};
@@ -9,10 +9,10 @@ module.exports = function readDatabase(filePath) {
       } else {
         const lines = data.toString().split('\n');
         const noHeader = lines.slice(1);
-        for (let i=0; i < noHeader.length; i++) {
+        for (let i = 0; i < noHeader.length; i += 1) {
           if (noHeader[i]) {
-            let field = noHeader[i].toString().split(',');
-            if (students.hasOwnProperty(field[3])) {
+            const field = noHeader[i].toString().split(',');
+            if (Object.prototype.hasOwnProperty.call(students, field[3])) {
               students[field[3]].push(field[0]);
             } else {
               students[field[3]] = [field[0]];
@@ -23,4 +23,4 @@ module.exports = function readDatabase(filePath) {
       }
     });
   });
-}
+};
