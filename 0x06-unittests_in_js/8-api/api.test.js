@@ -18,11 +18,12 @@ describe("Index page", function() {
     });
     it("check correct content", function() {
 	request(options, (err, res, body) => {
-	    if (err) {
-		expect(res.statusCode).to.not.equal(200);
-	    } else {
-		expect(body).to.equal("Welcome to the payment system");
-	    }
+	    expect(body).to.contain("Welcome to the payment system");
+	});
+    });
+    it("check correct content length", function() {
+	request(options, (err, res, body) => {
+	    expect(res.headers['content-length']).to.equal('29');
 	});
     });
 });
