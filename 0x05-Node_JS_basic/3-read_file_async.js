@@ -8,7 +8,7 @@ function countStudents(fileName) {
     readFile(fileName, (err, data) => {
       if (err) {
         reject(err);
-        throw Error('Cannot load the database');
+        throw new Error('Cannot load the database');
       }
       const lines = data.toString().split('\n');
       for (let i = 0; i < lines.length; i += 1) {
