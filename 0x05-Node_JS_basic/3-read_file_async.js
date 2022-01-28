@@ -8,7 +8,7 @@ function countStudents(fileName) {
     readFile(fileName, (err, data) => {
       if (err) {
         reject(err);
-        throw new Error('Cannot load the database');
+        throw Error('Cannot load the database');
       }
       const lines = data.toString().split('\n');
       for (let i = 0; i < lines.length; i += 1) {
@@ -28,11 +28,10 @@ function countStudents(fileName) {
         }
       }
       const l = length - 1;
-      process.stdout.write(`Number of students: ${l}\n`);
+      console.log(`Number of students: ${l}`);
       for (const [key, value] of Object.entries(fields)) {
         if (key !== 'field') {
-          process.stdout.write(`Number of students in ${key}: ${value}. `);
-          process.stdout.write(`List: ${students[key].join(', ')}\n`);
+          console.log(`Number of students in ${key}: ${value}. List: ${students[key].join(', ')}`);
         }
       }
       resolve(data);
