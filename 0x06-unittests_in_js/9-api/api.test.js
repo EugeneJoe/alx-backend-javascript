@@ -35,7 +35,7 @@ describe("Cart page", function() {
 	});
     });
     it("check correct status code for incorrect url", function(done) {
-	request.get("http://localhost:7865/kim", function(err, res, body) {
+	request.get("http://localhost:7865/cart/kim", function(err, res, body) {
 	    expect(res.statusCode).to.equal(404);
 	    done();
 	});
